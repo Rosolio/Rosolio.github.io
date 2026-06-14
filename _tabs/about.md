@@ -6,14 +6,14 @@ order: 4
 
 ## About Me
 
-Welcome to my personal blog! I'm a developer who loves to write about technology, programming, and life.
+NJU-SE '28, nothing-else-to-say
 
 ### What I Do
 
 - Write code
-- Share knowledge
-- Learn new things
+- Play Valorant
+- Date with my gf
 
 ### Contact
 
-Feel free to reach out to me via email or social media.
+Feel free to reach out to me via email.
