@@ -14,7 +14,7 @@ timezone: Asia/Shanghai
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Rosolio's # the main title
+title: Rosolio # the main title
 
 tagline: Why so serious? # it will display as the subtitle
 
