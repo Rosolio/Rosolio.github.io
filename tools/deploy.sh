@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 #
-# Build and publish the site
+# Publish the site
 
 help() {
-  echo "Build and publish the site to GitHub"
+  echo "Publish the site to GitHub"
   echo
   echo "Usage:"
   echo
@@ -34,9 +34,6 @@ while (($#)); do
     ;;
   esac
 done
-
-echo "> Building site..."
-JEKYLL_ENV=production bundle exec jekyll b
 
 echo "> Committing changes..."
 git add -A
