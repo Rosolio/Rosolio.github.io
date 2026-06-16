@@ -34,4 +34,5 @@ tags: []
 
 EOF
 
+git add "$FILENAME"
 echo "Created: $FILENAME"
