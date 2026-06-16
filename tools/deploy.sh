@@ -10,11 +10,11 @@ help() {
   echo "   bash $0 [options]"
   echo
   echo "Options:"
-  echo "     -m, --message MSG   Commit message (default: 'new post')"
+  echo "     -m, --message MSG   Commit message (default: current date)"
   echo "     -h, --help          Print this help information."
 }
 
-MESSAGE="new post"
+MESSAGE=$(date +%Y-%m-%d)
 
 while (($#)); do
   opt="$1"
