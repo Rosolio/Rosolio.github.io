@@ -1,5 +1,5 @@
 ---
-title: Outline-of-Modern-Chinese-History
+title: 中国近代史纲要
 date: 2026-06-25 18:59:36 +0800
 categories: [notes]
 tags: []
