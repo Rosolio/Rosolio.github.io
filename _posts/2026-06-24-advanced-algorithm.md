@@ -1,8 +1,8 @@
 ---
 title: 2026高级算法复习
 date: 2026-06-24 21:00:19 +0800
-categories: []
-tags: []
+categories: [notes]
+tags: [algorithm]
 math: true
 ---
 # 2026高级算法复习 考点问答合集
