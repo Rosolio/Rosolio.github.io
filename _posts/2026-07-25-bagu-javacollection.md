@@ -5,7 +5,7 @@ categories: [ bagu ]
 tags: [ Java ]
 ---
 
-# 背八股笔记
+# 背八股笔记 - Java集合篇
 
 原文：https://xiaolincoding.com/interview/collections.html
 
@@ -215,6 +215,8 @@ List<Integer> numList2 = Arrays.stream(numArr).boxed().collect(Collectors.toList
 ```
 
 > 基本类型数组直接asList()会把整个数组当成一个元素，必须转换为包装类的List
+>
+
 ---
 
 ## 三、Set
