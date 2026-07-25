@@ -1,11 +1,13 @@
 ---
-title: bagu
+title: bagu-JavaBasic
 date: 2026-07-21 15:20:36 +0800
 categories: [ bagu ]
 tags: [ Java ]
 ---
 
-# 背八股笔记 - Java篇
+# 背八股笔记 - Java基础篇
+
+原文：https://xiaolincoding.com/interview/java.html
 
 ## 一、 Java基础
 
@@ -695,7 +697,7 @@ String c = "hello";String d = "hello";System.out.println(c == d); // 输出 true
 2. hashCode 相等：对象不一定相等（哈希冲突）
 3. 只重写 equals 不重写 hashCode：HashMap/HashSet 会存重复相同业务对象，集合失效
 
-> 比如两个id相同的user对象，equals返回true，但hashcode不同，会被当成两个不同元素存入集合
+> 比如两个id相同的user对象，equals(根据id)返回true，但hashcode不同，会被当成两个不同元素存入集合
 
 ### 10.4 <mark>String / StringBuilder / StringBuffer
 
@@ -716,7 +718,7 @@ String c = "hello";String d = "hello";System.out.println(c == d); // 输出 true
 4. CompletableFuture：异步编程，解决 Future 阻塞回调地狱
 5. 接口默认 / 静态方法、重复注解、方法引用
 
-## 11.1 <mark>lambda表达式
+### 11.1 <mark>lambda表达式
 
 - (parameters) -> expression：当 Lambda 体只有一个表达式时使用，表达式的结果会作为返回值。
 - (parameters) -> { statements; }：当 Lambda 体包含多条语句时，需要使用大括号将语句括起来，若有返回值则需要使用 return 语句。
@@ -991,7 +993,7 @@ BIO阻塞；NIO非阻塞 + Selector多路复用，支撑高并发。
 我们平时Web服务、RPC框架（Dubbo、Netty）底层都是 **NIO**；
 普通本地小文件读写简单场景，直接使用BIO或者Java8+ `Files` 工具类即可。
 
-## 15. 拓展
+## 十五、 拓展
 
 ### 15.1 有一个学生类，想按照分数排序，再按学号排序
 
