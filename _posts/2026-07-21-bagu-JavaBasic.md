@@ -3,7 +3,6 @@ title: bagu-JavaBasic
 date: 2026-07-21 15:20:36 +0800
 categories: [ bagu ]
 tags: [ Java ]
-private: false
 ---
 
 # 背八股笔记 - Java基础篇
