@@ -30,6 +30,7 @@ title: ${TITLE}
 date: ${DATE} ${TIME} +0800
 categories: []
 tags: []
+private: false
 ---
 
 EOF
