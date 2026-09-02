@@ -3,12 +3,24 @@ title: bagu-JavaBasic
 date: 2026-07-21 15:20:36 +0800
 categories: [ bagu ]
 tags: [ Java ]
-private: true
+private: false
 ---
 
 # 背八股笔记 - Java基础篇
 
 原文：https://xiaolincoding.com/interview/java.html
+
+## 前言
+
+- 重点：
+  - [面向对象三大特性](#31-怎么理解面向对象简单说说封装继承多态)
+    ：封装、继承、多态，尤其是[多态的几种体现形式](#32-mark多态体现在)、重载和重写的区别
+  - [int和Integer](#28-integer相比int)：[为什么有包装类](#27-markjava为什么要有integer)、[自动装箱拆箱的原理](#26-mark装箱与拆箱)、[Integer缓存机制](#210-markinteger缓存机制)
+  - [String/StringBuffer/StringBuilder](#104-markstring--stringbuilder--stringbuffer)：三者区别以及使用场景、[String不可变的原理](#mark105-string-不可变的原理)
+  - [equals和hashcode](#103-markequals-与-hashcode-配套重写规则hashmap-必考)：为什么要配套重写、不重写有什么问题，在HashMap/HashSet里的影响
+  - [Java8新特性](#十一java-8-新特性): [Lambda表达式](#111-marklambda表达式)、[Stream API](#112-markstream-api)、Optional
+  - [反射机制](#七mark反射)：[是什么](#71-什么是反射机制)
+    、怎么用、[实际应用](#72-反射在你平时写代码或者框架中的应用场景有哪些)
 
 ## 一、 Java基础
 
@@ -710,6 +722,12 @@ String c = "hello";String d = "hello";System.out.println(c == d); // 输出 true
 | 线程安全 | 天然安全（不可变）   | 不安全，无同步       | 安全，方法加 synchronized |
 | 性能   | 频繁拼接极差      | 单线程最优         | 多线程同步损耗，较慢          |
 | 场景   | 固定常量字符串     | 单线程频繁拼接       | 多线程字符串拼接            |
+
+### <mark>10.5 String 不可变的原理：
+
+类被 final 锁死、内部数组被 private final 封住、所有修改方法都返回新对象
+java 8前：`private final char[] value`
+java 9后：`private final byte[] value`
 
 ## 十一、java 8 新特性
 
