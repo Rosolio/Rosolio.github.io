@@ -13,12 +13,12 @@ tags: [ Java ]
 
 - 重点：
   - [面向对象三大特性](#31-怎么理解面向对象简单说说封装继承多态)
-    ：封装、继承、多态，尤其是[多态的几种体现形式](#32-mark多态体现在)、重载和重写的区别
-  - [int和Integer](#28-integer相比int)：[为什么有包装类](#27-markjava为什么要有integer)、[自动装箱拆箱的原理](#26-mark装箱与拆箱)、[Integer缓存机制](#210-markinteger缓存机制)
-  - [String/StringBuffer/StringBuilder](#104-markstring--stringbuilder--stringbuffer)：三者区别以及使用场景、[String不可变的原理](#mark105-string-不可变的原理)
-  - [equals和hashcode](#103-markequals-与-hashcode-配套重写规则hashmap-必考)：为什么要配套重写、不重写有什么问题，在HashMap/HashSet里的影响
-  - [Java8新特性](#十一java-8-新特性): [Lambda表达式](#111-marklambda表达式)、[Stream API](#112-markstream-api)、Optional
-  - [反射机制](#七mark反射)：[是什么](#71-什么是反射机制)
+    ：封装、继承、多态，尤其是[多态的几种体现形式](#32-多态体现在)、重载和重写的区别
+  - [int和Integer](#28-integer相比int)：[为什么有包装类](#27-java为什么要有integer)、[自动装箱拆箱的原理](#26-装箱与拆箱)、[Integer缓存机制](#210-integer缓存机制)
+  - [String/StringBuffer/StringBuilder](#104-string--stringbuilder--stringbuffer)：三者区别以及使用场景、[String不可变的原理](#105-string-不可变的原理)
+  - [equals和hashcode](#103-equals-与-hashcode-配套重写规则hashmap-必考)：为什么要配套重写、不重写有什么问题，在HashMap/HashSet里的影响
+  - [Java8新特性](#十一java-8-新特性): [Lambda表达式](#111-lambda表达式)、[Stream API](#112-stream-api)、Optional
+  - [反射机制](#七反射)：[是什么](#71-什么是反射机制)
     、怎么用、[实际应用](#72-反射在你平时写代码或者框架中的应用场景有哪些)
 
 ## 一、 Java基础
@@ -198,7 +198,7 @@ if(animal instanceof Dog){
 二进制浮点数无法精确表示一些小数（只能表示1/2^n的和的小数）
 金融、支付场景必须使用BigDemical，创建时候传入字符串而非double，避免初始化时就失真
 
-### 2.6 <mark>装箱与拆箱 {:#26-mark装箱与拆箱}
+### 2.6 装箱与拆箱
 
 - 装箱：基本类型 -> 包装类`Integer i = 10`(底层是Integer i = Integer.valueOf(10))
 - 拆箱：包装类 -> 基本类型`int a = i`(底层是int a = i.intValue())
@@ -213,7 +213,7 @@ for(int i = 1000;i<5000;i++){
 // 本例中循环值已超出IntegerCache(default -128-127)范围，因此会创建将近4000个Integer对象
 ```
 
-### 2.7 <mark>java为什么要有Integer？ {:#27-markjava为什么要有integer}
+### 2.7 java为什么要有Integer？
 
 - 集合 / 泛型只能存引用类型，不能存 int，必须包装为 Integer
 - 提供工具方法：字符串转数字、进制转换等(Collections.sort()/Integer.toString()/stream())
@@ -230,7 +230,7 @@ for(int i = 1000;i<5000;i++){
 基本数据类型：变量对应的内存块直接存储数据本身(stack)
 因此，读写效率：基本数据类型>包装类，内存占用：Integer=16B,int=4B
 
-### 2.10 <mark>Integer缓存机制 {:#210-markinteger缓存机制}
+### 2.10 Integer缓存机制
 
 `Integer.valueOf()`内置缓存池，默认缓存**-128~127**的integer对象
 
@@ -242,7 +242,7 @@ for(int i = 1000;i<5000;i++){
 ### 3.1 怎么理解面向对象？简单说说封装继承多态
 
 对象：属性+行为，面向对象就是以对象为中心，通过对象间的交互来完成程序功能，灵活可扩展  
-<mark>面向对象三大特性：封装、继承、多态
+面向对象三大特性：封装、继承、多态
 
 - 封装：隐藏内部实现，对外提供getter/setter访问，控制数据修改逻辑，提高安全
 - 继承：子类 extends 父类，子类自动共享父类的数据结构和方法，建立类之间的层次关系
@@ -250,7 +250,7 @@ for(int i = 1000;i<5000;i++){
   - 编译时多态：重载
   - 运行时多态：重写
 
-### 3.2 <mark>多态体现在？ {:#32-mark多态体现在}
+### 3.2 多态体现在？
 
 1. 重载Overloading：同一类中同名方法，参数列表不同，编译时确定调用哪一个方法（add(int a,int b);/add(double a,double b);）
 2. 重写Overriding：子类提供对父类同名方法的具体实现，运行时根据对象的实际类型确定调用那个版本的方法，这是实现多态的主要方式
@@ -484,9 +484,9 @@ public class Main {
 
 ```
 
-## 七、<mark>反射 {:#七mark反射}
+## 七、反射
 
-### 7.1 什么是反射机制？ {:#71-什么是反射机制}
+### 7.1 什么是反射机制?
 
 运行时获取类完整信息，动态创建对象、调用方法、读写私有字段
 
@@ -703,7 +703,7 @@ String c = "hello";String d = "hello";System.out.println(c == d); // 输出 true
 >
 > 业务比较内容一律使用`equals()`，字符串先判空避免空指针。
 
-### 10.3 <mark>equals 与 hashCode 配套重写规则（HashMap 必考） {:#103-markequals-与-hashcode-配套重写规则hashmap-必考}
+### 10.3 equals 与 hashCode 配套重写规则（HashMap 必考）
 
 1. 相等对象（equals=true）：hashCode 必须相等
 2. hashCode 相等：对象不一定相等（哈希冲突）
@@ -711,7 +711,7 @@ String c = "hello";String d = "hello";System.out.println(c == d); // 输出 true
 
 > 比如两个id相同的user对象，equals(根据id)返回true，但hashcode不同，会被当成两个不同元素存入集合
 
-### 10.4 <mark>String / StringBuilder / StringBuffer {:#104-markstring--stringbuilder--stringbuffer}
+### 10.4 String / StringBuilder / StringBuffer
 
 表格
 
@@ -722,7 +722,7 @@ String c = "hello";String d = "hello";System.out.println(c == d); // 输出 true
 | 性能   | 频繁拼接极差      | 单线程最优         | 多线程同步损耗，较慢          |
 | 场景   | 固定常量字符串     | 单线程频繁拼接       | 多线程字符串拼接            |
 
-### <mark>10.5 String 不可变的原理： {:#mark105-string-不可变的原理}
+### 10.5 String 不可变的原理：
 
 类被 final 锁死、内部数组被 private final 封住、所有修改方法都返回新对象
 java 8前：`private final char[] value`
@@ -736,12 +736,12 @@ java 9后：`private final byte[] value`
 4. CompletableFuture：异步编程，解决 Future 阻塞回调地狱
 5. 接口默认 / 静态方法、重复注解、方法引用
 
-### 11.1 <mark>lambda表达式 {:#111-marklambda表达式}
+### 11.1 lambda表达式
 
 - (parameters) -> expression：当 Lambda 体只有一个表达式时使用，表达式的结果会作为返回值。
 - (parameters) -> { statements; }：当 Lambda 体包含多条语句时，需要使用大括号将语句括起来，若有返回值则需要使用 return 语句。
 
-### 11.2 <mark>Stream API {:#112-markstream-api}
+### 11.2 Stream API
 
 - 例1：从列表中筛选长度大于3的字符串，收集到新列表中
 - 没有 Stream API 的做法：
