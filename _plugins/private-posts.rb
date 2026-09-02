@@ -1,25 +1,10 @@
 #!/usr/bin/env ruby
 #
-# Hide private posts from the public site
+# Map private posts to Jekyll's native unpublished behavior
 
-module Jekyll
-  class PrivatePostsGenerator < Generator
-    priority :highest
+Jekyll::Hooks.register :posts, :post_init do |post|
+  value = post.data['private']
+  next unless value == true || value.to_s.casecmp('true').zero?
 
-    def generate(site)
-      posts = site.posts.docs
-      private_posts = posts.select { |post| private_post?(post) }
-
-      return if private_posts.empty?
-
-      posts.reject! { |post| private_post?(post) }
-    end
-
-    private
-
-    def private_post?(post)
-      value = post.data['private']
-      value == true || value.to_s.casecmp('true').zero?
-    end
-  end
+  post.data['published'] = false
 end

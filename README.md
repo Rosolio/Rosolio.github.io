@@ -28,6 +28,7 @@ Check out the [theme's docs](https://github.com/cotes2020/jekyll-theme-chirpy/wi
 ## Private Posts
 
 在文章 front matter 里加 `private: true`，这篇文章就不会出现在站点公开页面里。
+这个开关会自动转成 Jekyll 的 `published: false`。
 
 ## Contributing
 
