@@ -1,10 +1,15 @@
 #!/usr/bin/env ruby
 #
-# Map private posts to Jekyll's native unpublished behavior
+# Remove private posts from the public site before generation
 
-Jekyll::Hooks.register :posts, :post_init do |post|
+Jekyll::Hooks.register :site, :post_read do |site|
+  posts = site.collections['posts']&.docs
+  next unless posts
+
+  posts.reject! { |post| private_post?(post) }
+end
+
+def private_post?(post)
   value = post.data['private']
-  next unless value == true || value.to_s.casecmp('true').zero?
-
-  post.data['published'] = false
+  value == true || value.to_s.casecmp('true').zero?
 end
