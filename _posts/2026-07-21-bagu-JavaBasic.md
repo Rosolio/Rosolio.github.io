@@ -15,7 +15,8 @@ tags: [ Java ]
   - [面向对象三大特性](#31-怎么理解面向对象简单说说封装继承多态)
     ：封装、继承、多态，尤其是[多态的几种体现形式](#32-多态体现在)、重载和重写的区别
   - [int和Integer](#28-integer相比int)：[为什么有包装类](#27-java为什么要有integer)、[自动装箱拆箱的原理](#26-装箱与拆箱)、[Integer缓存机制](#210-integer缓存机制)
-  - [String/StringBuffer/StringBuilder](#104-string--stringbuilder--stringbuffer)：三者区别以及使用场景、[String不可变的原理](#105-string-不可变的原理)
+  - [String/StringBuffer/StringBuilder](#104-string--stringbuilder--stringbuffer)
+    ：三者区别以及使用场景、[String不可变的原理](#105-string-不可变的原理)
   - [equals和hashcode](#103-equals-与-hashcode-配套重写规则hashmap-必考)：为什么要配套重写、不重写有什么问题，在HashMap/HashSet里的影响
   - [Java8新特性](#十一java-8-新特性): [Lambda表达式](#111-lambda表达式)、[Stream API](#112-stream-api)、Optional
   - [反射机制](#七反射)：[是什么](#71-什么是反射机制)
@@ -252,9 +253,9 @@ for(int i = 1000;i<5000;i++){
 
 ### 3.2 多态体现在？
 
-1. 重载Overloading：同一类中同名方法，参数列表不同，编译时确定调用哪一个方法（add(int a,int b);/add(double a,double b);）
+1. 重载Overloading：同一类中同名方法，参数列表不同，编译时确定调用哪一个方法（`add(int a,int b)`;/`add(double a,double b)`）
 2. 重写Overriding：子类提供对父类同名方法的具体实现，运行时根据对象的实际类型确定调用那个版本的方法，这是实现多态的主要方式
-   （@override`注解）（例如animal类里面有sound()，Dog类可以重写以实现bark，Cat类可以实现meow）
+   （`@override`注解）（例如animal类里面有`sound()`，Dog类可以重写以实现`bark()`，Cat类可以实现`meow()`）
 3. 接口与实现：多个类可以实现同一个接口，并且用接口类型的引用来调用这些方法，可以保持调用方式的一致性
    （dog与cat可以分别实现animal接口的`makesound()`方法）
 4. 向上转型
@@ -706,10 +707,36 @@ String c = "hello";String d = "hello";System.out.println(c == d); // 输出 true
 ### 10.3 equals 与 hashCode 配套重写规则（HashMap 必考）
 
 1. 相等对象（equals=true）：hashCode 必须相等
-2. hashCode 相等：对象不一定相等（哈希冲突）
+2. hashCode 相等：对象不一定相等（哈希冲突）(hashCode是根据对象内存地址生成的)
 3. 只重写 equals 不重写 hashCode：HashMap/HashSet 会存重复相同业务对象，集合失效
 
-> 比如两个id相同的user对象，equals(根据id)返回true，但hashcode不同，会被当成两个不同元素存入集合
+> 为什么 HashMap 会受影响？  
+> `HashMap.put(key)`：先拿 key 的 hashCode 算桶下标；桶内再用`equals`精确匹配。  
+> 如果 equals 相等但 hashCode 不等：落到不同桶，无法覆盖，集合认为两个 key 不一样。
+
+完整示例：
+
+```java
+import java.util.Objects;
+
+class User {
+  private String name;
+  private int age;
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    User user = (User) o;
+    return age == user.age && Objects.equals(name, user.name);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(name, age);// equals 和 hashCode，**使用完全同一套字段**。
+  }
+}
+```
 
 ### 10.4 String / StringBuilder / StringBuffer
 
@@ -724,8 +751,8 @@ String c = "hello";String d = "hello";System.out.println(c == d); // 输出 true
 
 ### 10.5 String 不可变的原理：
 
-类被 final 锁死、内部数组被 private final 封住、所有修改方法都返回新对象
-java 8前：`private final char[] value`
+类被 final 锁死、内部数组被 private final 封住、所有修改方法都返回新对象  
+java 8前：`private final char[] value`  
 java 9后：`private final byte[] value`
 
 ## 十一、java 8 新特性
