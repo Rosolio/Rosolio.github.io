@@ -1,8 +1,8 @@
 ---
 title: bagu-agent
 date: 2026-09-12 14:00:58 +0800
-categories: [ ]
-tags: [ ]
+categories: [ bagu ]
+tags: [ agent ]
 private: false
 ---
 
