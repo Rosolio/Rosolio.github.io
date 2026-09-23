@@ -409,7 +409,6 @@ MyClass obj = (MyClass) Class.forName("com.example.MyClass").getDeclaredConstruc
 ```
 
 java的反射API，在运行时动态地创建对象，不需要在编译时知道具体的类。
-[关于反射](#七反射)
 > `Class.newInstance()`在JDK 9后已经被标记为过时，因为它只能调用无参构造器，更推荐使用`Constructor.newInstance()`
 > ，更强大也更灵活(同样是反射)
 
